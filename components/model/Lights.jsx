@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { PointLightHelper, SpotLightHelper } from 'three'
-import { useHelper } from '@react-three/drei'
+import { Environment, useHelper } from '@react-three/drei'
 import { EffectComposer, N8AO } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
@@ -82,7 +82,7 @@ export default function Lights() {
 				ref={spotLightRef4}
 				castShadow
 				position={[-9, 0.25, 5.5]}
-				intensity={250}
+				intensity={500}
 				color={'white'}
 				distance={75}
 				angle={Math.PI / 6}
@@ -101,9 +101,9 @@ export default function Lights() {
 				penumbra={0.5}
 			/>
 
-			<EffectComposer disableNormalPass>
-				<N8AO color='#000' aoRadius={1} intensity={5} aoSamples={8} quality='performance' halfRes />
-			</EffectComposer>
+			{/* <EffectComposer disableNormalPass>
+				<N8AO color='#000' aoRadius={1} intensity={5} aoSamples={4} quality='performance' halfRes denoiseSamples={4} />
+			</EffectComposer> */}
 		</>
 	)
 }
