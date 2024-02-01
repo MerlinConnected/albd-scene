@@ -64,10 +64,13 @@ export default function Model(props) {
 			<mesh castShadow receiveShadow geometry={nodes.props.geometry} position={[2.705, -0.762, -5.715]}>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
-			<Float rotationIntensity={2} floatIntensity={5} floatingRange={[0, 0.2]}>
-				{/* <mesh ref={ref} castShadow receiveShadow geometry={nodes.sphere.geometry} position={[-0.113, -0.152, 0.03]}>
-					<meshPhysicalMaterial color={'#010101'} />
-				</mesh> */}
+			<mesh castShadow receiveShadow geometry={nodes.upperPedestal.geometry} position={[-0.165, -2.697, 0.868]}>
+				<meshPhysicalMaterial color={'#000000'} />
+			</mesh>
+			<mesh castShadow receiveShadow geometry={nodes.lowerPedestal.geometry} position={[-0.165, -3.186, 0.868]}>
+				<meshPhysicalMaterial color={'#000000'} />
+			</mesh>
+			<Float rotationIntensity={0} floatIntensity={5} floatingRange={[0, 0.2]}>
 				<Sphere />
 			</Float>
 			<mesh
