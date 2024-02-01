@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 
 import Model from './Model'
 import Lights from './Lights'
+import Sphere from './Sphere'
 
 export default function Scene() {
 	return (
@@ -12,6 +13,7 @@ export default function Scene() {
 			<Canvas shadows camera={{ fov: 10, position: [0, -1.5, 50] }}>
 				<Suspense fallback={null}>
 					<Model />
+					<Sphere />
 					<OrbitControls makeDefault />
 					{/* <FlyControls /> */}
 					<Lights />
