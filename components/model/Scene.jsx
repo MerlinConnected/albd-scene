@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Environment, Loader } from '@react-three/drei'
+import { OrbitControls, Loader, FlyControls } from '@react-three/drei'
 
 import { Suspense } from 'react'
 
@@ -12,9 +12,9 @@ export default function Scene() {
 			<Canvas shadows camera={{ fov: 10, position: [0, -1.5, 50] }}>
 				<Suspense fallback={null}>
 					<Model />
-					<OrbitControls />
+					<OrbitControls makeDefault />
+					{/* <FlyControls /> */}
 					<Lights />
-					<Environment preset='city' />
 				</Suspense>
 			</Canvas>
 			{/* <Loader /> */}
