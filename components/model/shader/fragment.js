@@ -117,7 +117,7 @@ export const fragmentShader = `
         vec3 color = vec3(r, g, b);
         vec3 final_color = color;
         final_color = floor(final_color * 5.0);
-        final_color = clamp(final_color, 0.005, 0.007);
+        final_color = clamp(final_color, 0.05, 0.07);
 
         gl_FragColor = vec4(final_color, 1.0);
     }
