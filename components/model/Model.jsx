@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber'
 import { fragmentShader } from './shader/fragment'
 import { vertexShader } from './shader/vertex'
 
+import Sphere from './Sphere'
+
 import * as THREE from 'three'
 
 export default function Model(props) {
@@ -62,11 +64,12 @@ export default function Model(props) {
 			<mesh castShadow receiveShadow geometry={nodes.props.geometry} position={[2.705, -0.762, -5.715]}>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
-			{/* <Float rotationIntensity={2} floatIntensity={5} floatingRange={[0, 0.2]}>
-				<mesh ref={ref} castShadow receiveShadow geometry={nodes.sphere.geometry} position={[-0.113, -0.152, 0.03]}>
+			<Float rotationIntensity={2} floatIntensity={5} floatingRange={[0, 0.2]}>
+				{/* <mesh ref={ref} castShadow receiveShadow geometry={nodes.sphere.geometry} position={[-0.113, -0.152, 0.03]}>
 					<meshPhysicalMaterial color={'#010101'} />
-				</mesh>
-			</Float> */}
+				</mesh> */}
+				<Sphere />
+			</Float>
 			<mesh
 				ref={chairMesh}
 				onPointerOver={(event) => {
