@@ -26,9 +26,11 @@ function Sphere() {
                     uniform float time;
                     ${noise}
                     float noise(vec3 p){
-                        float n = snoise(vec4(p, time));
+                        float n = snoise(vec4(p / 2., time));
                         n = sin(n * 3.1415926 * 8.);
-                        n = n * 0.5 + 0.5;
+                        n = n * 1.0 + 0.5;
+                        // n = clamp(n, 0.1, 0.9);
+                        n = smoothstep(0.1, 0.9, n);
                         n *= n;
                         return n;
                       }
@@ -102,9 +104,9 @@ function Sphere() {
 	})
 
 	return (
-		<mesh ref={meshRef} scale={0.5}>
-			<icosahedronGeometry ref={geoRef} args={[1, 200]} />
-			<meshPhysicalMaterial ref={materialRef} color='#010101' />
+		<mesh ref={meshRef} scale={0.45}>
+			<icosahedronGeometry ref={geoRef} args={[1, 96]} />
+			<meshPhysicalMaterial ref={materialRef} color='#000000' specularIntensity={0.33} />
 		</mesh>
 	)
 }
