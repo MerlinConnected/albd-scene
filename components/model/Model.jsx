@@ -77,7 +77,7 @@ export default function Model(props) {
 	)
 
 	useFrame(({ clock }) => {
-		uniforms.iTime.value = clock.getElapsedTime()
+		uniforms.iTime.value = clock.getElapsedTime() / 2
 	})
 
 	return (
