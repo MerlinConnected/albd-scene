@@ -30,7 +30,7 @@ export default function Scene() {
 					{/* <OrbitControls makeDefault /> */}
 					<Lights />
 					<FollowLight />
-					<Perf />
+					{/* <Perf /> */}
 					<Rig />
 				</Suspense>
 			</Canvas>
