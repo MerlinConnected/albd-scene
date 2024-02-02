@@ -6,9 +6,7 @@ export const fragmentShader = `
     uniform vec2 iResolution;
     uniform float iTime;
 
-    varying vec2 vUv; // Passed from the vertex shader
-
-    // Your existing functions (like mod289, permute, snoise, rotate, rotateOrigin) go here
+    varying vec2 vUv; 
 
     vec3 mod289(vec3 x) {
         return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -97,7 +95,7 @@ export const fragmentShader = `
         vec2 rotated_fragCoord = vUv * iResolution * u_rotated_scale;
         vec2 primary_fragCoord = vUv * iResolution * u_primary_scale * 0.05;
 
-        vec2 rotated_center = rotated_resolution.xy / 2.0;
+        vec2 rotated_center = rotated_resolution.xy / 4.0;
         vec2 primary_center = primary_resolution.xy / 1.0;
 
         vec2 coord0 = primary_fragCoord + primary_center;

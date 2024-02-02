@@ -35,7 +35,7 @@ function Sphere() {
                         return n;
                       }
                       vec3 getPos(vec3 p){
-                        return p * (4. + noise(p * 0.875) * 0.25);
+                        return p * (4. + noise(p * 0.875) * .25);
                       }
                     ${shader.vertexShader}
       `
@@ -92,14 +92,14 @@ function Sphere() {
 				)
 
 				materialRef.current.userData.shader = shader
-				console.log(shader.vertexShader)
+				// console.log(shader.vertexShader)
 			}
 		}
 	}, [])
 
 	useFrame(({ clock }) => {
 		if (materialRef.current.userData.shader) {
-			materialRef.current.userData.shader.uniforms.time.value = clock.getElapsedTime() / 4
+			materialRef.current.userData.shader.uniforms.time.value = clock.getElapsedTime() / 8
 		}
 	})
 

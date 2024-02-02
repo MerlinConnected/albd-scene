@@ -9,27 +9,58 @@ import Sphere from './Sphere'
 
 import * as THREE from 'three'
 
+import { state } from '../../utils/store'
+import { useSnapshot } from 'valtio'
+
 export default function Model(props) {
 	const { nodes } = useGLTF('/ALBD_PREP_SCENE.glb')
 
-	const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(-4.211, -2.423, -0.588))
-	const [targetRotation, setTargetRotation] = useState(new THREE.Vector3(0, -0, 0))
-	const chairMesh = useRef()
+	const snap = useSnapshot(state)
 
-	const ref = useRef()
+	const chairRef = useRef()
+	const updRef = useRef()
+	const lpdRef = useRef()
+
 	const mesh = useRef()
 
 	useFrame(() => {
-		if (ref.current) {
-			ref.current.rotation.x += 0.001
-			ref.current.rotation.y += 0.001
+		const targetChairRotation = snap.hover ? [0, -Math.PI / 8, Math.PI / 16] : [0, 0, 0]
+		const targetChairPosition = snap.hover ? [-4.211, -1.5, -0.588] : [-4.211, -2.423, -0.588]
+
+		if (chairRef.current) {
+			chairRef.current.rotation.x = THREE.MathUtils.lerp(chairRef.current.rotation.x, targetChairRotation[0], 0.1)
+			chairRef.current.rotation.y = THREE.MathUtils.lerp(chairRef.current.rotation.y, targetChairRotation[1], 0.1)
+			chairRef.current.rotation.z = THREE.MathUtils.lerp(chairRef.current.rotation.z, targetChairRotation[2], 0.1)
+
+			chairRef.current.position.x = THREE.MathUtils.lerp(chairRef.current.position.x, targetChairPosition[0], 0.1)
+			chairRef.current.position.y = THREE.MathUtils.lerp(chairRef.current.position.y, targetChairPosition[1], 0.1)
+			chairRef.current.position.z = THREE.MathUtils.lerp(chairRef.current.position.z, targetChairPosition[2], 0.1)
 		}
 
-		if (chairMesh.current) {
-			chairMesh.current.position.lerp(targetPosition, 0.1)
-			chairMesh.current.rotation.x = THREE.MathUtils.lerp(chairMesh.current.rotation.x, targetRotation.x, 0.1)
-			chairMesh.current.rotation.y = THREE.MathUtils.lerp(chairMesh.current.rotation.y, targetRotation.y, 0.1)
-			chairMesh.current.rotation.z = THREE.MathUtils.lerp(chairMesh.current.rotation.z, targetRotation.z, 0.1)
+		const targetUpdRotation = snap.hover ? [0, Math.PI / 8, Math.PI / 16] : [0, 0, 0]
+		const targetUpdPosition = snap.hover ? [-0.165, -2, 0.868] : [-0.165, -2.697, 0.868]
+
+		if (updRef.current) {
+			updRef.current.rotation.x = THREE.MathUtils.lerp(updRef.current.rotation.x, targetUpdRotation[0], 0.1)
+			updRef.current.rotation.y = THREE.MathUtils.lerp(updRef.current.rotation.y, targetUpdRotation[1], 0.1)
+			updRef.current.rotation.z = THREE.MathUtils.lerp(updRef.current.rotation.z, targetUpdRotation[2], 0.1)
+
+			updRef.current.position.x = THREE.MathUtils.lerp(updRef.current.position.x, targetUpdPosition[0], 0.1)
+			updRef.current.position.y = THREE.MathUtils.lerp(updRef.current.position.y, targetUpdPosition[1], 0.1)
+			updRef.current.position.z = THREE.MathUtils.lerp(updRef.current.position.z, targetUpdPosition[2], 0.1)
+		}
+
+		const targetLpdRotation = snap.hover ? [Math.PI / 32, -Math.PI / 16, -Math.PI / 32] : [0, 0, 0]
+		const targetLpdPosition = snap.hover ? [-0.165, -2.7, 0.868] : [-0.165, -3.186, 0.868]
+
+		if (lpdRef.current) {
+			lpdRef.current.rotation.x = THREE.MathUtils.lerp(lpdRef.current.rotation.x, targetLpdRotation[0], 0.1)
+			lpdRef.current.rotation.y = THREE.MathUtils.lerp(lpdRef.current.rotation.y, targetLpdRotation[1], 0.1)
+			lpdRef.current.rotation.z = THREE.MathUtils.lerp(lpdRef.current.rotation.z, targetLpdRotation[2], 0.1)
+
+			lpdRef.current.position.x = THREE.MathUtils.lerp(lpdRef.current.position.x, targetLpdPosition[0], 0.1)
+			lpdRef.current.position.y = THREE.MathUtils.lerp(lpdRef.current.position.y, targetLpdPosition[1], 0.1)
+			lpdRef.current.position.z = THREE.MathUtils.lerp(lpdRef.current.position.z, targetLpdPosition[2], 0.1)
 		}
 	})
 
@@ -56,39 +87,36 @@ export default function Model(props) {
 				castShadow
 				receiveShadow
 				geometry={nodes.backwall.geometry}
-				position={[2.705, -0.762, -5.715]}
-				scale={10}
+				position={[-4.93, 0.807, -28.019]}
+				scale={5}
 			>
 				<shaderMaterial vertexShader={vertexShader} fragmentShader={fragmentShader} uniforms={uniforms} />
 			</mesh>
 			<mesh castShadow receiveShadow geometry={nodes.props.geometry} position={[2.705, -0.762, -5.715]}>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
-			<mesh castShadow receiveShadow geometry={nodes.upperPedestal.geometry} position={[-0.165, -2.697, 0.868]}>
+			<mesh
+				ref={updRef}
+				castShadow
+				receiveShadow
+				geometry={nodes.upperPedestal.geometry}
+				position={[-0.165, -2.697, 0.868]}
+			>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
-			<mesh castShadow receiveShadow geometry={nodes.lowerPedestal.geometry} position={[-0.165, -3.186, 0.868]}>
+			<mesh
+				ref={lpdRef}
+				castShadow
+				receiveShadow
+				geometry={nodes.lowerPedestal.geometry}
+				position={[-0.165, -3.186, 0.868]}
+			>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
 			<Float rotationIntensity={0} floatIntensity={5} floatingRange={[0, 0.2]}>
 				<Sphere />
 			</Float>
-			<mesh
-				ref={chairMesh}
-				onPointerOver={(event) => {
-					event.stopPropagation()
-					setTargetPosition(new THREE.Vector3(-4.5, -1.5, -0.588))
-					setTargetRotation(new THREE.Vector3(0, -Math.PI / 8, Math.PI / 16))
-				}}
-				onPointerOut={(event) => {
-					setTargetRotation(new THREE.Vector3(0, 0, 0))
-					setTargetPosition(new THREE.Vector3(-4.211, -2.423, -0.588))
-				}}
-				castShadow
-				receiveShadow
-				geometry={nodes.chair.geometry}
-				position={[-4.211, -2.423, -0.588]}
-			>
+			<mesh ref={chairRef} castShadow receiveShadow geometry={nodes.chair.geometry} position={[-4.211, -2.423, -0.588]}>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
 		</group>
