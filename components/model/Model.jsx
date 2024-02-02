@@ -38,7 +38,7 @@ export default function Model(props) {
 		}
 
 		const targetUpdRotation = snap.hover ? [0, Math.PI / 8, Math.PI / 16] : [0, 0, 0]
-		const targetUpdPosition = snap.hover ? [-0.165, -2, 0.868] : [-0.165, -2.697, 0.868]
+		const targetUpdPosition = snap.hover ? [-0.165, -1.5, 0.868] : [-0.165, -2.697, 0.868]
 
 		if (updRef.current) {
 			updRef.current.rotation.x = THREE.MathUtils.lerp(updRef.current.rotation.x, targetUpdRotation[0], 0.1)
@@ -113,7 +113,7 @@ export default function Model(props) {
 			>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
-			<Float rotationIntensity={0} floatIntensity={5} floatingRange={[0, 0.2]}>
+			<Float rotationIntensity={0} floatIntensity={5} floatingRange={[0.15, 0.25]}>
 				<Sphere />
 			</Float>
 			<mesh ref={chairRef} castShadow receiveShadow geometry={nodes.chair.geometry} position={[-4.211, -2.423, -0.588]}>
