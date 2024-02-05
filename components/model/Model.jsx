@@ -82,14 +82,7 @@ export default function Model(props) {
 
 	return (
 		<group {...props} dispose={null}>
-			<mesh
-				ref={mesh}
-				castShadow
-				receiveShadow
-				geometry={nodes.backwall.geometry}
-				position={[-4.93, 0.807, -28.019]}
-				scale={5}
-			>
+			<mesh ref={mesh} castShadow receiveShadow geometry={nodes.backwall.geometry} position={[-4.93, 5.551, -28.019]}>
 				<shaderMaterial vertexShader={vertexShader} fragmentShader={fragmentShader} uniforms={uniforms} />
 			</mesh>
 			<mesh castShadow receiveShadow geometry={nodes.props.geometry} position={[2.705, -0.762, -5.715]}>
