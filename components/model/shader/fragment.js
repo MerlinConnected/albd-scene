@@ -189,8 +189,10 @@ export const fragmentShader = `
         vec3 finalColor = mix(secondBaseColor, accent, thirdPattern);
     
         float gradient = vUv.y; 
+
+        float halfGradient = smoothstep(0.0, 0.5, 1.0 - gradient);
     
-        vec3 colorWithBlackOverlay = mix(vec3(0.0, 0.0, 0.0), finalColor, 1.0 - gradient);
+        vec3 colorWithBlackOverlay = mix(vec3(0.0, 0.0, 0.0), finalColor, halfGradient);
     
         gl_FragColor = vec4(colorWithBlackOverlay, 1.0);
     }
