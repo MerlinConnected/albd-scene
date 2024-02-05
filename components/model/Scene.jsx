@@ -38,7 +38,14 @@ function Rig() {
 export default function Scene() {
 	return (
 		<>
-			<Canvas shadows dpr={(0.5, 1)} camera={{ fov: 10, position: [0, -1.5, 75] }}>
+			<Canvas
+				shadows
+				onCreated={({ gl }) => {
+					gl.toneMapping = THREE.ACESFilmicToneMapping
+				}}
+				dpr={(0.5, 1)}
+				camera={{ fov: 10, position: [0, -1.5, 75] }}
+			>
 				<Suspense fallback={null}>
 					<Model />
 					<Lights />
