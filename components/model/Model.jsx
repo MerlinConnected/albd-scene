@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, useState } from 'react'
-import { useGLTF, Float } from '@react-three/drei'
+import { useGLTF, Float, MeshRefractionMaterial, MeshTransmissionMaterial } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
 import { fragmentShader } from './shader/fragment'
