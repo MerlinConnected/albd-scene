@@ -71,7 +71,8 @@ export default function Model(props) {
 			u_rot_left_divisor: { value: -109.0 },
 			u_rot_right_divisor: { value: 49.0 },
 			iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-			iTime: { value: 0 }
+			iTime: { value: 0 },
+			resolution: { value: new THREE.Vector4() }
 		}),
 		[]
 	)
