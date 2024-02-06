@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import Model from './Model'
 import Lights from './Lights'
 import FollowLight from './FollowLight'
+import { Perf } from 'r3f-perf'
 
 function Rig() {
 	const { camera } = useThree()
@@ -51,6 +52,7 @@ export default function Scene() {
 					<Lights />
 					<FollowLight />
 					<Rig />
+					{/* <Perf /> */}
 				</Suspense>
 			</Canvas>
 		</>

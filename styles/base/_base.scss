@@ -77,12 +77,6 @@ h3 {
 // }
 
 #root {
-	> div {
-		left: 7%;
-	}
-}
-
-main {
 	pointer-events: none;
 
 	position: fixed;

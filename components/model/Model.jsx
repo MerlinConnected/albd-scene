@@ -2,7 +2,7 @@ import React, { useRef, useMemo, useState } from 'react'
 import { useGLTF, Float, MeshRefractionMaterial, MeshTransmissionMaterial } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
-import { fragmentShader } from './shader/fragment'
+import fragmentShader from './shader/fragment.glsl?raw'
 import { vertexShader } from './shader/vertex'
 
 import Sphere from './Sphere'
