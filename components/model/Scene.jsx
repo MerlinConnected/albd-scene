@@ -52,9 +52,9 @@ export default function Scene() {
 					<Model />
 					<Lights />
 					<FollowLight />
-					{/* <Rig /> */}
+					<Rig />
 					{/* <Perf /> */}
-					<OrbitControls />
+					{/* <OrbitControls /> */}
 				</Suspense>
 			</Canvas>
 		</>
