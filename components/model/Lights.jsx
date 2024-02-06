@@ -95,7 +95,7 @@ export default function Lights() {
 				castShadow
 				position={[4.5, -3.25, -5]}
 				intensity={10000}
-				color={'#D33C31'}
+				color={'#2F4A4A'}
 				distance={10}
 				angle={Math.PI / 12}
 				penumbra={0.5}
