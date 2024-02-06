@@ -38,8 +38,8 @@ export default function Lights() {
 				ref={spotLightRef1}
 				castShadow
 				position={[-4, 3, 2]}
-				intensity={1000}
-				color={'#D33C31'}
+				intensity={500}
+				color={'white'}
 				distance={12}
 				angle={Math.PI / 6}
 				penumbra={0.5}
@@ -48,8 +48,8 @@ export default function Lights() {
 				ref={spotLightRef6}
 				castShadow
 				position={[-4, 3, -2]}
-				intensity={1500}
-				color={'#D33C31'}
+				intensity={500}
+				color={'white'}
 				distance={12}
 				angle={Math.PI / 6}
 				penumbra={0.5}
@@ -94,8 +94,8 @@ export default function Lights() {
 				ref={spotLightRef5}
 				castShadow
 				position={[4.5, -3.25, -5]}
-				intensity={10000}
-				color={'#2F4A4A'}
+				intensity={5500}
+				color={'white'}
 				distance={10}
 				angle={Math.PI / 12}
 				penumbra={0.5}
