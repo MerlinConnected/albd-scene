@@ -7,6 +7,7 @@ import Model from './Model'
 import Lights from './Lights'
 import FollowLight from './FollowLight'
 import { Perf } from 'r3f-perf'
+import { OrbitControls } from '@react-three/drei'
 
 function Rig() {
 	const { camera } = useThree()
@@ -51,8 +52,9 @@ export default function Scene() {
 					<Model />
 					<Lights />
 					<FollowLight />
-					<Rig />
+					{/* <Rig /> */}
 					{/* <Perf /> */}
+					<OrbitControls />
 				</Suspense>
 			</Canvas>
 		</>
