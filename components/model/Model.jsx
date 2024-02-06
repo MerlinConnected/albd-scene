@@ -3,7 +3,7 @@ import { useGLTF, Float, MeshRefractionMaterial, MeshTransmissionMaterial } from
 import { useFrame } from '@react-three/fiber'
 
 import fragmentShader from './shader/fragment.glsl?raw'
-import { vertexShader } from './shader/vertex'
+import vertexShader from './shader/vertex.glsl?raw'
 
 import Sphere from './Sphere'
 
