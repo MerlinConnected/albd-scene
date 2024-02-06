@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import * as THREE from 'three'
 
-import { noise } from './shader/noise'
+import noise from './shader/noise.glsl?raw'
 
 function Sphere() {
 	const meshRef = useRef()
