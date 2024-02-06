@@ -120,8 +120,10 @@
 
 uniform float iTime;
 uniform vec4 resolution;
+uniform vec2 uMouse;
 varying vec2 vUv;
 varying vec3 vPosition;
+
 float PI = 3.141592653589793238;
 float scale = 0.3;
 
@@ -176,7 +178,10 @@ void main() {
     vec3 baseSecond = vec3(0.19, 0.31, 0.31);
     vec3 baseThird = vec3(0.89, 0.55, 0.27);
     
-    float n = noise((vPosition * scale) + iTime);
+    float mouseInfluence = 0.5; // Adjust the influence of the mouse movement
+    vec3 pos = vPosition * scale + vec3(uMouse, 0) * mouseInfluence + vec3(iTime, iTime, iTime);
+    
+    float n = noise(pos);
     
     vec2 baseUV = rotate2D(n) * vPosition.xy * 0.1;
     
@@ -188,18 +193,21 @@ void main() {
     vec3 secondBaseColor = mix(baseColor, baseThird, secondPattern);
     vec3 finalColor = mix(secondBaseColor, accent, thirdPattern);
     
+    // Convert to Black and White
     vec3 BWColor = vec3(colorToBW(finalColor));
     
+    // Remove edges Blur
     vec3 flooredColor = floor(BWColor * 10.0);
     
-    vec3 smoothedColor = smoothstep(0.02, 0.05, flooredColor);
+    // Clamp between Greys
+    vec3 clampColor = clamp(flooredColor, 0.05, 0.1);
     
-    vec3 clampColor = clamp(smoothedColor, 0.05, 0.1);
-    
+    // Create a Gradient
     float gradient = vUv.y;
     
     float halfGradient = smoothstep(0.0, 0.25, 1.0 - gradient);
     
+    // Mix Zebra Stripes with Gradient
     vec3 colorWithBlackOverlay = mix(vec3(0.0, 0.0, 0.0), clampColor, halfGradient);
     
     gl_FragColor = vec4(colorWithBlackOverlay, 1.0);

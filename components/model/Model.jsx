@@ -11,6 +11,7 @@ import * as THREE from 'three'
 
 import { state } from '../../utils/store'
 import { useSnapshot } from 'valtio'
+import { useEffect } from 'react'
 
 export default function Model(props) {
 	const { nodes } = useGLTF('/ALBD_PREP_SCENE.glb')
@@ -22,6 +23,22 @@ export default function Model(props) {
 	const lpdRef = useRef()
 
 	const mesh = useRef()
+
+	const mousePosition = useRef(new THREE.Vector2(0, 0))
+	const targetMousePosition = useRef(new THREE.Vector2(0, 0))
+
+	const handleMouseMove = (event) => {
+		const x = (event.clientX / window.innerWidth) * 2 - 1
+		const y = -(event.clientY / window.innerHeight) * 2 + 1
+		targetMousePosition.current.set(x, y)
+	}
+
+	useEffect(() => {
+		window.addEventListener('mousemove', handleMouseMove)
+		return () => {
+			window.removeEventListener('mousemove', handleMouseMove)
+		}
+	}, [])
 
 	useFrame(() => {
 		const targetChairRotation = snap.hover ? [0, -Math.PI / 8, Math.PI / 16] : [0, 0, 0]
@@ -73,8 +90,11 @@ export default function Model(props) {
 		[]
 	)
 
-	useFrame(({ clock }) => {
-		uniforms.iTime.value = clock.getElapsedTime() / 2
+	useFrame(({ clock }, state) => {
+		mousePosition.current.lerp(targetMousePosition.current, 0.1)
+
+		uniforms.iTime.value = clock.getElapsedTime() / 8
+		uniforms.uMouse.value = mousePosition.current
 	})
 
 	return (
@@ -85,6 +105,7 @@ export default function Model(props) {
 			<mesh castShadow receiveShadow geometry={nodes.props.geometry} position={[2.705, -0.762, -5.715]}>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
+			{/* <Float enabled={snap.hover} rotationIntensity={0.4} floatIntensity={2}> */}
 			<mesh
 				ref={updRef}
 				castShadow
@@ -94,6 +115,7 @@ export default function Model(props) {
 			>
 				<meshPhysicalMaterial color={'#000000'} />
 			</mesh>
+			{/* </Float> */}
 			<mesh
 				ref={lpdRef}
 				castShadow
