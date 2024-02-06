@@ -66,13 +66,9 @@ export default function Model(props) {
 
 	const uniforms = useMemo(
 		() => ({
-			u_rotated_scale: { value: 0.006 },
-			u_primary_scale: { value: 0.003 },
-			u_rot_left_divisor: { value: -109.0 },
-			u_rot_right_divisor: { value: 49.0 },
-			iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
 			iTime: { value: 0 },
-			resolution: { value: new THREE.Vector4() }
+			resolution: { value: new THREE.Vector4() },
+			uMouse: { value: new THREE.Vector2() }
 		}),
 		[]
 	)
