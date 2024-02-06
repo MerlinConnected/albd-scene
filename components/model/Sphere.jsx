@@ -21,18 +21,22 @@ function Sphere() {
 		if (materialRef.current) {
 			materialRef.current.onBeforeCompile = (shader) => {
 				shader.uniforms.time = { value: 0 }
+				shader.uniforms.uMouse = { value: new THREE.Vector2() }
 
 				shader.vertexShader = `
                     uniform float time;
+					uniform vec2 uMouse;
                     ${noise}
                     float noise(vec3 p){
-                        float n = snoise(vec4(p / 2., time));
-                        n = sin(n * 3.1415926 * 8.);
-                        n = n * 1.0 + 0.5;
-                        // n = clamp(n, 0.1, 0.9);
-                        n = smoothstep(0.1, 0.9, n);
-                        n *= n;
-                        return n;
+						// Modify the noise function to include mouse position
+						vec3 adjustedPos = p + vec3((uMouse * 0.5), 0.0);
+						float n = snoise(vec4(adjustedPos / 2., time));
+						n = sin(n * 3.1415926 * 8.);
+						n = n * 1.0 + 0.5;
+						// n = clamp(n, 0.1, 0.9);
+						n = smoothstep(0.1, 0.9, n);
+						n *= n;
+						return n;
                       }
                       vec3 getPos(vec3 p){
                         return p * (4. + noise(p * 0.875) * .25);
@@ -92,14 +96,21 @@ function Sphere() {
 				)
 
 				materialRef.current.userData.shader = shader
-				// console.log(shader.vertexShader)
+				console.log(shader.vertexShader)
 			}
 		}
 	}, [])
 
-	useFrame(({ clock }) => {
+	const targetMousePosition = useRef(new THREE.Vector2())
+
+	useFrame(({ clock, mouse }) => {
 		if (materialRef.current.userData.shader) {
 			materialRef.current.userData.shader.uniforms.time.value = clock.getElapsedTime() / 8
+
+			targetMousePosition.current.x = mouse.x
+			targetMousePosition.current.y = mouse.y
+
+			materialRef.current.userData.shader.uniforms.uMouse.value.lerp(targetMousePosition.current, 0.1)
 		}
 	})
 
