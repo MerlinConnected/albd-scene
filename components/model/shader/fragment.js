@@ -180,9 +180,9 @@ export const fragmentShader = `
     
         vec2 baseUV = rotate2D(n) * vPosition.xy * 0.1;
     
-        float basePattern = lines(baseUV, 0.5);
-        float secondPattern = lines(baseUV, 0.1);
-        float thirdPattern = lines(baseUV, 0.4);
+        float basePattern = lines(baseUV, 0.9);
+        float secondPattern = lines(baseUV, 0.5);
+        float thirdPattern = lines(baseUV, 0.1);
     
         vec3 baseColor = mix(baseSecond, baseFirst, basePattern);
         vec3 secondBaseColor = mix(baseColor, baseThird, secondPattern);
@@ -190,7 +190,7 @@ export const fragmentShader = `
     
         float gradient = vUv.y; 
 
-        float halfGradient = smoothstep(0.0, 0.5, 1.0 - gradient);
+        float halfGradient = smoothstep(0.0, 0.25, 1.0 - gradient);
     
         vec3 colorWithBlackOverlay = mix(vec3(0.0, 0.0, 0.0), finalColor, halfGradient);
     
