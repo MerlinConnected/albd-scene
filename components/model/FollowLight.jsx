@@ -23,24 +23,23 @@ export default function FollowLight() {
 		const groundPos = gcRef.current.position
 		const wallPos = wcRef.current.position
 
+		let newTargetX = targetPosition.x
+		let newTargetY = targetPosition.y
+
 		if (pos.y > groundPos.y) {
-			setCanMoveY(true)
-		} else {
-			setCanMoveY(false)
+			newTargetY = pos.y
 		}
 
 		if (pos.x < wallPos.x) {
-			setCanMoveX(true)
-		} else {
-			setCanMoveX(false)
+			newTargetX = pos.x
 		}
 
-		setTargetPosition(new Vector3(canMoveX ? pos.x : targetPosition.x, canMoveY ? pos.y : targetPosition.y, pos.z))
+		const newTargetPosition = new Vector3(newTargetX, newTargetY, pos.z)
 
 		const alpha = 0.1
-		lightRef.current.position.lerp(targetPosition, alpha)
-		// lightRef.current.position.x = targetPosition.x
-		// lightRef.current.position.y = targetPosition.y
+		lightRef.current.position.lerp(newTargetPosition, alpha)
+
+		setTargetPosition(newTargetPosition)
 	})
 
 	return (
