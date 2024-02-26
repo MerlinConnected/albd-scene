@@ -5,7 +5,12 @@ import { Environment, useHelper } from '@react-three/drei'
 import { PointLightHelper, SpotLightHelper } from 'three'
 import * as THREE from 'three'
 
+import { state } from '../../utils/store'
+import { snapshot } from 'valtio'
+
 export default function Lights() {
+	const snap = snapshot(state)
+
 	const pointLightRef1 = useRef()
 	const pointLightRef2 = useRef()
 	const spotLightRef1 = useRef()
@@ -15,14 +20,14 @@ export default function Lights() {
 	const spotLightRef5 = useRef()
 	const spotLightRef6 = useRef()
 
-	// useHelper(pointLightRef1, PointLightHelper, 1, 'green')
-	// useHelper(pointLightRef2, PointLightHelper, 1, 'green')
-	// useHelper(spotLightRef1, SpotLightHelper, 'cyan')
-	// useHelper(spotLightRef2, SpotLightHelper, 'red')
-	// useHelper(spotLightRef3, SpotLightHelper, 'blue')
-	// useHelper(spotLightRef4, SpotLightHelper, 'hotpink')
-	// useHelper(spotLightRef5, SpotLightHelper, 'purple')
-	// useHelper(spotLightRef6, SpotLightHelper, 'lightblue')
+	useHelper(snap.debug && pointLightRef1, PointLightHelper, 1, 'green')
+	useHelper(snap.debug && pointLightRef2, PointLightHelper, 1, 'green')
+	useHelper(snap.debug && spotLightRef1, SpotLightHelper, 'cyan')
+	useHelper(snap.debug && spotLightRef2, SpotLightHelper, 'red')
+	useHelper(snap.debug && spotLightRef3, SpotLightHelper, 'blue')
+	useHelper(snap.debug && spotLightRef4, SpotLightHelper, 'hotpink')
+	useHelper(snap.debug && spotLightRef5, SpotLightHelper, 'purple')
+	useHelper(snap.debug && spotLightRef6, SpotLightHelper, 'yellow')
 
 	const target1 = new THREE.Object3D()
 	target1.position.set(-7, 0, 0)

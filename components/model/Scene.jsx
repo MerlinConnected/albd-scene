@@ -4,10 +4,15 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Suspense, useRef, useState, useEffect } from 'react'
 import { OrbitControls } from '@react-three/drei'
 import * as easing from 'maath/easing'
+import { useControls } from 'leva'
 
 import FollowLight from './FollowLight'
 import Lights from './Lights'
 import Model from './Model'
+
+import { state } from '../../utils/store'
+import { useSnapshot } from 'valtio'
+
 import { Perf } from 'r3f-perf'
 
 function Rig() {
@@ -39,6 +44,10 @@ function Rig() {
 }
 
 export default function Scene() {
+	const snap = useSnapshot(state)
+	const { debug } = useControls({ debug: false })
+
+	state.debug = debug
 	return (
 		<>
 			<Canvas
@@ -53,9 +62,8 @@ export default function Scene() {
 					<Model />
 					<Lights />
 					<FollowLight />
-					<Rig />
-					{/* <Perf /> */}
-					{/* <OrbitControls /> */}
+					<Perf position='bottom-left' minimal />
+					{snap.debug ? <OrbitControls /> : <Rig />}
 				</Suspense>
 			</Canvas>
 		</>

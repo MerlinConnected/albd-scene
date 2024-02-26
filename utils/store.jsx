@@ -1,7 +1,8 @@
 import { proxy } from 'valtio'
 
 const state = proxy({
-	hover: false
+	hover: false,
+	debug: false
 })
 
 export { state }
