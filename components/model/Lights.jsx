@@ -7,7 +7,7 @@ import * as THREE from 'three'
 
 import { state } from '../../utils/store'
 import { snapshot } from 'valtio'
-import { InvertColorsEffect } from './shader/ShaderPost'
+// import { InvertColorsEffect } from './shader/ShaderPost'
 
 export default function Lights() {
 	const snap = snapshot(state)
