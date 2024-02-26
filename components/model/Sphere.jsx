@@ -96,7 +96,7 @@ function Sphere() {
 				)
 
 				materialRef.current.userData.shader = shader
-				console.log(shader.vertexShader)
+				// console.log(shader.vertexShader)
 			}
 		}
 	}, [])
