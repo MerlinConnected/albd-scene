@@ -16,10 +16,7 @@ export default function Overlay() {
 					<path fill='#fff' fillRule='evenodd' d='M31 2H0V0h31v2Zm0 12H0v-2h31v2Z' clipRule='evenodd' />
 				</svg>
 			</nav>
-			<button
-				onMouseEnter={() => ((state.hover = true), console.log(state.hover))}
-				onMouseLeave={() => ((state.hover = false), console.log(state.hover))}
-			>
+			<button onMouseEnter={() => (state.hover = true)} onMouseLeave={() => (state.hover = false)}>
 				STARTING NOW
 			</button>
 		</div>
