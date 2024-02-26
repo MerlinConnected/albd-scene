@@ -62,8 +62,13 @@ export default function Scene() {
 					<Model />
 					<Lights />
 					<FollowLight />
-					<Perf position='bottom-left' minimal />
-					{snap.debug ? <OrbitControls /> : <Rig />}
+					{snap.debug ? (
+						<>
+							<OrbitControls /> <Perf position='bottom-left' minimal />
+						</>
+					) : (
+						<Rig />
+					)}
 				</Suspense>
 			</Canvas>
 		</>
