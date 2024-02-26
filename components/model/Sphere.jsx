@@ -103,12 +103,12 @@ function Sphere() {
 
 	const targetMousePosition = useRef(new THREE.Vector2())
 
-	useFrame(({ clock, mouse }) => {
+	useFrame(({ clock, pointer }) => {
 		if (materialRef.current.userData.shader) {
 			materialRef.current.userData.shader.uniforms.time.value = clock.getElapsedTime() / 8
 
-			targetMousePosition.current.x = mouse.x
-			targetMousePosition.current.y = mouse.y
+			targetMousePosition.current.x = pointer.x
+			targetMousePosition.current.y = pointer.y
 
 			materialRef.current.userData.shader.uniforms.uMouse.value.lerp(targetMousePosition.current, 0.1)
 		}
