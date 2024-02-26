@@ -43,7 +43,7 @@ export default function Lights() {
 				position={[-4, 0, 4]}
 				intensity={50}
 				color={'white'}
-				distance={75}
+				distance={15}
 				angle={Math.PI / 6}
 				penumbra={0.5}
 			/>
@@ -62,10 +62,10 @@ export default function Lights() {
 				ref={spotLightRef3}
 				castShadow
 				position={[0, 5, 0]}
-				intensity={25}
+				intensity={250}
 				color={'white'}
-				distance={75}
-				angle={Math.PI / 6}
+				distance={10}
+				angle={Math.PI / 4}
 				penumbra={0.5}
 			/>
 
