@@ -103,7 +103,7 @@ export default function Model(props) {
 				<shaderMaterial vertexShader={vertexShader} fragmentShader={fragmentShader} uniforms={uniforms} />
 			</mesh>
 			<mesh castShadow receiveShadow geometry={nodes.props.geometry} position={[2.705, -0.762, -5.715]}>
-				<meshPhysicalMaterial color={'#000000'} />
+				<meshPhysicalMaterial color={'white'} />
 			</mesh>
 			{/* <Float enabled={snap.hover} rotationIntensity={0.4} floatIntensity={2}> */}
 			<mesh
@@ -113,7 +113,7 @@ export default function Model(props) {
 				geometry={nodes.upperPedestal.geometry}
 				position={[-0.165, -2.697, 0.868]}
 			>
-				<meshPhysicalMaterial color={'#000000'} />
+				<meshPhysicalMaterial color={'white'} />
 			</mesh>
 			{/* </Float> */}
 			<mesh
@@ -123,13 +123,13 @@ export default function Model(props) {
 				geometry={nodes.lowerPedestal.geometry}
 				position={[-0.165, -3.186, 0.868]}
 			>
-				<meshPhysicalMaterial color={'#000000'} />
+				<meshPhysicalMaterial color={'white'} />
 			</mesh>
 			<Float rotationIntensity={0} floatIntensity={5} floatingRange={[0.15, 0.25]}>
 				<Sphere />
 			</Float>
 			<mesh ref={chairRef} castShadow receiveShadow geometry={nodes.chair.geometry} position={[-4.211, -2.423, -0.588]}>
-				<meshPhysicalMaterial color={'#000000'} />
+				<meshPhysicalMaterial color={'white'} />
 			</mesh>
 		</group>
 	)
