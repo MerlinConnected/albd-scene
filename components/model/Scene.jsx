@@ -1,13 +1,14 @@
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Suspense, useRef, useState, useEffect } from 'react'
-import * as easing from 'maath/easing'
 import * as THREE from 'three'
 
-import Model from './Model'
-import Lights from './Lights'
-import FollowLight from './FollowLight'
-import { Perf } from 'r3f-perf'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Suspense, useRef, useState, useEffect } from 'react'
 import { OrbitControls } from '@react-three/drei'
+import * as easing from 'maath/easing'
+
+import FollowLight from './FollowLight'
+import Lights from './Lights'
+import Model from './Model'
+import { Perf } from 'r3f-perf'
 
 function Rig() {
 	const { camera } = useThree()

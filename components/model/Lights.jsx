@@ -1,7 +1,8 @@
 import { useRef } from 'react'
-import { PointLightHelper, SpotLightHelper } from 'three'
-import { Environment, useHelper } from '@react-three/drei'
+
 import { EffectComposer, N8AO, Noise } from '@react-three/postprocessing'
+import { Environment, useHelper } from '@react-three/drei'
+import { PointLightHelper, SpotLightHelper } from 'three'
 import * as THREE from 'three'
 
 export default function Lights() {
