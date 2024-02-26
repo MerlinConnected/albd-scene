@@ -11,6 +11,7 @@
 		"@react-three/drei": "^9.97.0",
 		"@react-three/fiber": "^8.15.16",
 		"@react-three/postprocessing": "^2.15.12",
+		"leva": "^0.9.35",
 		"maath": "^0.10.7",
 		"r3f-perf": "^7.1.2",
 		"react": "^18.2.0",
