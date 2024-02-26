@@ -1,4 +1,5 @@
 import { useFrame, useThree } from '@react-three/fiber'
+import { useControls } from 'leva'
 import { useState, useRef, useEffect } from 'react'
 import { Vector3 } from 'three'
 
@@ -42,15 +43,19 @@ export default function FollowLight() {
 		setTargetPosition(newTargetPosition)
 	})
 
+	const { color } = useControls({ color: true })
+
 	return (
 		<>
 			<group ref={lightRef} position={[0, 0, 0]}>
 				<mesh>
 					<sphereGeometry args={[0.1, 16, 16]} />
-					<meshBasicMaterial color={'#ffffff'} />
+					<meshStandardMaterial color={'#ffffff'} emissive={'white'} emissiveIntensity={1} />
 				</mesh>
-				<pointLight position={[0, 0, 0]} intensity={10} />
+				<pointLight position={[0, 0, 0]} intensity={50} color={color ? '#E9CA48' : 'hotpink'} />
 			</group>
+
+			{/* WALLS */}
 			<mesh ref={gcRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, -3.4, 0]}>
 				<planeGeometry args={[10, 10]} />
 				<meshStandardMaterial transparent opacity={0} color={'hotpink'} />
