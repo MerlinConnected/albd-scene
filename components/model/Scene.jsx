@@ -6,7 +6,7 @@ import { OrbitControls } from '@react-three/drei'
 import * as easing from 'maath/easing'
 import { useControls } from 'leva'
 
-import FollowLight from './FollowLight'
+import CursorLight from './CursorLight'
 import Lights from './Lights'
 import Model from './Model'
 
@@ -61,7 +61,7 @@ export default function Scene() {
 				<Suspense fallback={null}>
 					<Model />
 					<Lights />
-					<FollowLight />
+					<CursorLight />
 					{snap.debug ? (
 						<>
 							<OrbitControls /> <Perf position='bottom-left' minimal />
