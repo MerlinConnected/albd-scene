@@ -52,7 +52,7 @@ export default function FollowLight() {
 					<sphereGeometry args={[0.1, 16, 16]} />
 					<meshStandardMaterial color={'#ffffff'} emissive={'white'} emissiveIntensity={1} />
 				</mesh>
-				<pointLight position={[0, 0, 0]} intensity={50} color={color ? '#E9CA48' : 'hotpink'} />
+				<pointLight position={[0, 0, 0]} intensity={50} color={color ? '#E9CA48' : '#E05837'} />
 			</group>
 
 			{/* WALLS */}
