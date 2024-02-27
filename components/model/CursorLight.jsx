@@ -3,7 +3,7 @@ import { useControls } from 'leva'
 import { useState, useRef, useEffect } from 'react'
 import { Vector3 } from 'three'
 
-export default function FollowLight() {
+export default function CursorLight() {
 	const lightRef = useRef()
 	const gcRef = useRef() // Ground collider reference
 	const wcRef = useRef() // Wall collider reference
