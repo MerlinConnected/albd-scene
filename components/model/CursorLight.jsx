@@ -43,16 +43,16 @@ export default function CursorLight() {
 		setTargetPosition(newTargetPosition)
 	})
 
-	const { color } = useControls({ color: true })
+	// const { color } = useControls({ color: true })
 
 	return (
 		<>
 			<group ref={lightRef} position={[0, 0, 0]}>
 				<mesh>
 					<sphereGeometry args={[0.1, 16, 16]} />
-					<meshStandardMaterial color={'#ffffff'} emissive={color ? '#E9CA48' : '#E05837'} emissiveIntensity={10} />
+					<meshStandardMaterial color={'#ffffff'} emissive={'white'} emissiveIntensity={10} />
 				</mesh>
-				<pointLight position={[0, 0, 0]} intensity={50} color={color ? '#E9CA48' : '#E05837'} />
+				<pointLight position={[0, 0, 0]} intensity={10} color={'white'} />
 			</group>
 
 			{/* WALLS */}
