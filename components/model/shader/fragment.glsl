@@ -200,15 +200,15 @@ void main() {
     vec3 flooredColor = floor(BWColor * 10.0);
     
     // Clamp between Greys
-    vec3 clampColor = clamp(flooredColor, 0.95, 0.98);
+    vec3 clampColor = clamp(flooredColor, 0.05, 0.75);
     
     // Create a Gradient
     float gradient = vUv.y;
     
-    float halfGradient = smoothstep(0.0, 0.25, 1.0 - gradient);
+    float halfGradient = smoothstep(0.0, 0.1, 1.0 - gradient);
     
     // Mix Zebra Stripes with Gradient
-    vec3 colorWithBlackOverlay = mix(vec3(0.718, 0.737, 0.752), clampColor, halfGradient);
+    vec3 colorWithBlackOverlay = mix(vec3(0.5961, 0.5804, 0.5725), clampColor, halfGradient);
     
     gl_FragColor = vec4(colorWithBlackOverlay, 1.0);
 }
