@@ -7,6 +7,7 @@ import * as THREE from 'three'
 
 import { state } from '../../utils/store'
 import { snapshot } from 'valtio'
+import { N8AO } from '@react-three/postprocessing'
 
 export default function Lights() {
 	const snap = snapshot(state)
@@ -68,8 +69,70 @@ export default function Lights() {
 				penumbra={0.5}
 			/>
 
+			{/* CYAN */}
+			<spotLight
+				castShadow
+				position={[-4, 3, 2]}
+				intensity={500}
+				color={'white'}
+				distance={12}
+				angle={Math.PI / 6}
+				penumbra={0.5}
+			/>
+			<spotLight
+				castShadow
+				position={[-4, 3, -2]}
+				intensity={500}
+				color={'white'}
+				distance={12}
+				angle={Math.PI / 6}
+				penumbra={0.5}
+			/>
+			{/* RED */}
+			<spotLight
+				castShadow
+				position={[-4.5, 3.25, 8.5]}
+				intensity={2500}
+				color={'white'}
+				distance={10}
+				angle={Math.PI / 12}
+				penumbra={0.5}
+			/>
+			{/* BLUE */}
+			<spotLight
+				castShadow
+				position={[-14, 0, 40]}
+				intensity={1500}
+				color={'white'}
+				distance={75}
+				angle={Math.PI / 6}
+				penumbra={0.5}
+				target={target1}
+			/>
+			{/* HOTPINK */}
+			<spotLight
+				castShadow
+				position={[-9, 0.25, 5.5]}
+				intensity={500}
+				color={'white'}
+				distance={75}
+				angle={Math.PI / 6}
+				penumbra={0.5}
+				target={target2}
+			/>
+			{/* PURPLE */}
+			<spotLight
+				castShadow
+				position={[4.5, -3.25, -5]}
+				intensity={5500}
+				color={'white'}
+				distance={10}
+				angle={Math.PI / 12}
+				penumbra={0.5}
+			/>
+
 			{/* <EffectComposer>
-				<InvertColorsEffect />
+				<N8AO />
 			</EffectComposer> */}
 		</>
 	)
