@@ -46,9 +46,9 @@ export default function CursorLight() {
 			<group ref={lightRef} position={[0, 0, 0]}>
 				<mesh>
 					<sphereGeometry args={[0.1, 16, 16]} />
-					<meshStandardMaterial color={'#ffffff'} emissive={'#d1531d'} emissiveIntensity={20} />
+					<meshStandardMaterial color={'#ffffff'} emissive={'#FF6725'} emissiveIntensity={20} />
 				</mesh>
-				<pointLight position={[0, 0, 0]} intensity={75} color={'#d1531d'} />
+				<pointLight position={[0, 0, 0]} intensity={75} color={'#FF6725'} />
 			</group>
 
 			{/* WALLS */}
