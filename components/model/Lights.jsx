@@ -16,13 +16,26 @@ export default function Lights() {
 	const spotLightRef2 = useRef()
 	const spotLightRef3 = useRef()
 	const spotLightRef4 = useRef()
+	const spotLightRef5 = useRef()
+	const spotLightRef6 = useRef()
+	const spotLightRef7 = useRef()
+	const spotLightRef8 = useRef()
+	const spotLightRef9 = useRef()
+	const spotLightRef10 = useRef()
 
 	useHelper(snap.debug && pointLightRef1, PointLightHelper, 1, 'green')
 	useHelper(snap.debug && pointLightRef2, PointLightHelper, 1, 'green')
+
 	useHelper(snap.debug && spotLightRef1, SpotLightHelper, 'cyan')
 	useHelper(snap.debug && spotLightRef2, SpotLightHelper, 'red')
 	useHelper(snap.debug && spotLightRef3, SpotLightHelper, 'blue')
 	useHelper(snap.debug && spotLightRef4, SpotLightHelper, 'purple')
+	useHelper(snap.debug && spotLightRef5, SpotLightHelper, 'yellow')
+	useHelper(snap.debug && spotLightRef6, SpotLightHelper, 'yellow')
+	useHelper(snap.debug && spotLightRef7, SpotLightHelper, 'red')
+	useHelper(snap.debug && spotLightRef8, SpotLightHelper, 'blue')
+	useHelper(snap.debug && spotLightRef9, SpotLightHelper, 'hotpink')
+	useHelper(snap.debug && spotLightRef10, SpotLightHelper, 'purple')
 
 	const target1 = new THREE.Object3D()
 	target1.position.set(-7, 0, 0)
@@ -76,6 +89,61 @@ export default function Lights() {
 				color={'white'}
 				distance={10}
 				angle={Math.PI / 3}
+				penumbra={0.5}
+			/>
+
+			<spotLight
+				ref={spotLightRef5}
+				castShadow
+				position={[-4, 3, 2]}
+				intensity={500}
+				color={'white'}
+				distance={12}
+				angle={Math.PI / 6}
+				penumbra={0.5}
+			/>
+			<spotLight
+				ref={spotLightRef6}
+				castShadow
+				position={[-4, 3, -2]}
+				intensity={500}
+				color={'white'}
+				distance={12}
+				angle={Math.PI / 6}
+				penumbra={0.5}
+			/>
+			{/* RED */}
+			<spotLight
+				ref={spotLightRef7}
+				castShadow
+				position={[-4.5, 3.25, 8.5]}
+				intensity={2500}
+				color={'white'}
+				distance={10}
+				angle={Math.PI / 12}
+				penumbra={0.5}
+			/>
+			{/* HOTPINK */}
+			<spotLight
+				ref={spotLightRef9}
+				castShadow
+				position={[-9, 0.25, 5.5]}
+				intensity={500}
+				color={'white'}
+				distance={75}
+				angle={Math.PI / 6}
+				penumbra={0.5}
+				target={target2}
+			/>
+			{/* PURPLE */}
+			<spotLight
+				ref={spotLightRef10}
+				castShadow
+				position={[4.5, -3.25, -5]}
+				intensity={5500}
+				color={'white'}
+				distance={10}
+				angle={Math.PI / 12}
 				penumbra={0.5}
 			/>
 
