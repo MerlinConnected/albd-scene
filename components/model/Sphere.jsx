@@ -117,7 +117,7 @@ function Sphere() {
 	return (
 		<mesh ref={meshRef} scale={0.45}>
 			<icosahedronGeometry ref={geoRef} args={[1, 96]} />
-			<meshPhysicalMaterial ref={materialRef} color='white' specularIntensity={0.33} />
+			<meshPhysicalMaterial ref={materialRef} color='#242424' specularIntensity={0.33} />
 		</mesh>
 	)
 }
