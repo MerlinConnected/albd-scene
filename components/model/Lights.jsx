@@ -16,12 +16,14 @@ export default function Lights() {
 	const spotLightRef1 = useRef()
 	const spotLightRef2 = useRef()
 	const spotLightRef3 = useRef()
+	const spotLightRef4 = useRef()
 
 	useHelper(snap.debug && pointLightRef1, PointLightHelper, 1, 'green')
 	useHelper(snap.debug && pointLightRef2, PointLightHelper, 1, 'green')
 	useHelper(snap.debug && spotLightRef1, SpotLightHelper, 'cyan')
 	useHelper(snap.debug && spotLightRef2, SpotLightHelper, 'red')
 	useHelper(snap.debug && spotLightRef3, SpotLightHelper, 'blue')
+	useHelper(snap.debug && spotLightRef4, SpotLightHelper, 'purple')
 
 	const target1 = new THREE.Object3D()
 	target1.position.set(-7, 0, 0)
@@ -32,8 +34,8 @@ export default function Lights() {
 	return (
 		<>
 			<ambientLight intensity={2} color={'#cad4de'} />
-			<pointLight ref={pointLightRef1} castShadow position={[0, 3, 3]} intensity={50} />
-			<pointLight ref={pointLightRef2} castShadow position={[3, -2, 2]} intensity={50} />
+			<pointLight ref={pointLightRef1} castShadow position={[0, 3, 3]} intensity={25} />
+			<pointLight ref={pointLightRef2} castShadow position={[3, -2, 2]} intensity={5} />
 			{/* CYAN */}
 
 			<spotLight
@@ -65,6 +67,16 @@ export default function Lights() {
 				color={'white'}
 				distance={10}
 				angle={Math.PI / 4}
+				penumbra={0.5}
+			/>
+			<spotLight
+				ref={spotLightRef4}
+				castShadow
+				position={[0, 2, -3]}
+				intensity={250}
+				color={'white'}
+				distance={10}
+				angle={Math.PI / 3}
 				penumbra={0.5}
 			/>
 
