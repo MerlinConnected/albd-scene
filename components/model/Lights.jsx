@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 
-import { EffectComposer } from '@react-three/postprocessing'
 import { useHelper } from '@react-three/drei'
 import { PointLightHelper, SpotLightHelper } from 'three'
 import * as THREE from 'three'
