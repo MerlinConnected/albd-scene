@@ -64,7 +64,8 @@ export default function Scene() {
 					<CursorLight />
 					{snap.debug ? (
 						<>
-							<OrbitControls /> <Perf position='bottom-left' minimal />
+							<OrbitControls />
+							<Perf position='bottom-left' minimal />
 						</>
 					) : (
 						<Rig />

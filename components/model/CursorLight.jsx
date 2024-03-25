@@ -10,8 +10,6 @@ export default function CursorLight() {
 
 	const { camera } = useThree()
 	const [targetPosition, setTargetPosition] = useState(new Vector3())
-	const [canMoveX, setCanMoveX] = useState(true)
-	const [canMoveY, setCanMoveY] = useState(true)
 
 	useFrame((state) => {
 		const zDepth = -3
@@ -43,16 +41,14 @@ export default function CursorLight() {
 		setTargetPosition(newTargetPosition)
 	})
 
-	// const { color } = useControls({ color: true })
-
 	return (
 		<>
 			<group ref={lightRef} position={[0, 0, 0]}>
 				<mesh>
 					<sphereGeometry args={[0.1, 16, 16]} />
-					<meshStandardMaterial color={'#ffffff'} emissive={'white'} emissiveIntensity={10} />
+					<meshStandardMaterial color={'#ffffff'} emissive={'#d1531d'} emissiveIntensity={20} />
 				</mesh>
-				<pointLight position={[0, 0, 0]} intensity={10} color={'white'} />
+				<pointLight position={[0, 0, 0]} intensity={75} color={'#d1531d'} />
 			</group>
 
 			{/* WALLS */}

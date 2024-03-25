@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react'
+import React, { useRef, useMemo, useState } from 'react'
 import { useGLTF, Float } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
@@ -99,68 +99,37 @@ export default function Model(props) {
 
 	return (
 		<group {...props} dispose={null}>
-			{/* BACKWALL */}
 			<mesh ref={mesh} castShadow receiveShadow geometry={nodes.backwall.geometry} position={[-4.93, 5.551, -28.019]}>
 				<shaderMaterial vertexShader={vertexShader} fragmentShader={fragmentShader} uniforms={uniforms} />
 			</mesh>
-
-			{/* FLOOR */}
-			<mesh castShadow receiveShadow geometry={nodes.ground.geometry} position={[2.705, -0.762, -5.715]}>
-				<meshPhysicalMaterial color={'#D5C5BA'} />
-			</mesh>
-
-			{/* PROPS */}
 			<mesh castShadow receiveShadow geometry={nodes.props.geometry} position={[2.705, -0.762, -5.715]}>
-				<meshPhysicalMaterial color={'#BA3C00'} />
+				<meshPhysicalMaterial color={'#b59f93'} />
 			</mesh>
-
-			{/* PEDESTAL */}
-			<group>
-				<mesh
-					ref={updRef}
-					castShadow
-					receiveShadow
-					geometry={nodes.upperPedestal.geometry}
-					position={[-0.165, -2.697, 0.868]}
-				>
-					<meshPhysicalMaterial color={'#cca300'} roughness={1} specularIntensity={2} />
-				</mesh>
-				<mesh
-					ref={lpdRef}
-					castShadow
-					receiveShadow
-					geometry={nodes.lowerPedestal.geometry}
-					position={[-0.165, -3.186, 0.868]}
-				>
-					<meshPhysicalMaterial color={'#cca300'} roughness={1} specularIntensity={2} />
-				</mesh>
-			</group>
-
-			{/* SPHERE */}
+			{/* <Float enabled={snap.hover} rotationIntensity={0.4} floatIntensity={2}> */}
+			<mesh
+				ref={updRef}
+				castShadow
+				receiveShadow
+				geometry={nodes.upperPedestal.geometry}
+				position={[-0.165, -2.697, 0.868]}
+			>
+				<meshPhysicalMaterial color={'#b59f93'} />
+			</mesh>
+			{/* </Float> */}
+			<mesh
+				ref={lpdRef}
+				castShadow
+				receiveShadow
+				geometry={nodes.lowerPedestal.geometry}
+				position={[-0.165, -3.186, 0.868]}
+			>
+				<meshPhysicalMaterial color={'#b59f93'} />
+			</mesh>
 			<Float rotationIntensity={0} floatIntensity={5} floatingRange={[0.15, 0.25]}>
 				<Sphere />
 			</Float>
-
-			{/* CHAIR */}
-			<group ref={chairRef} position={[-4.211, -2.423, -0.588]}>
-				{/* SEAT */}
-				<mesh castShadow receiveShadow geometry={nodes.seat.geometry}>
-					<meshPhysicalMaterial color={'#537048'} roughness={1} specularIntensity={0} />
-				</mesh>
-				{/* LEGS */}
-				<mesh castShadow receiveShadow geometry={nodes.chair.geometry}>
-					<meshPhysicalMaterial color={'#719164'} />
-				</mesh>
-			</group>
-
-			{/* ARCHWAY */}
-			<mesh castShadow receiveShadow geometry={nodes.archway.geometry} position={[2.705, -0.762, -5.715]}>
-				<meshPhysicalMaterial color={'#4742a1'} roughness={1} specularIntensity={1} />
-			</mesh>
-
-			{/* CYLINDER */}
-			<mesh castShadow receiveShadow geometry={nodes.cylinder.geometry} position={[2.705, -0.762, -5.715]}>
-				<meshPhysicalMaterial color={'#BA3C00'} roughness={1} specularIntensity={1} />
+			<mesh ref={chairRef} castShadow receiveShadow geometry={nodes.chair.geometry} position={[-4.211, -2.423, -0.588]}>
+				<meshPhysicalMaterial color={'#b59f93'} />
 			</mesh>
 		</group>
 	)
