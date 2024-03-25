@@ -10,8 +10,6 @@ export default function CursorLight() {
 
 	const { camera } = useThree()
 	const [targetPosition, setTargetPosition] = useState(new Vector3())
-	const [canMoveX, setCanMoveX] = useState(true)
-	const [canMoveY, setCanMoveY] = useState(true)
 
 	useFrame((state) => {
 		const zDepth = -3
