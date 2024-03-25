@@ -146,10 +146,6 @@ export default function Lights() {
 				angle={Math.PI / 12}
 				penumbra={0.5}
 			/>
-
-			{/* <EffectComposer>
-				<InvertColorsEffect />
-			</EffectComposer> */}
 		</>
 	)
 }
